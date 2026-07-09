@@ -12,7 +12,7 @@ jobs:
 
     services:
       postgres:
-        image: pgvector/pgvector:16-pg16
+        image: pgvector/pgvector:pg16
         env:
           POSTGRES_DB: eakip
           POSTGRES_USER: postgres
@@ -39,14 +39,19 @@ jobs:
     - name: Checkout Codebase
       uses: actions/checkout@v4
 
-    - name: Setup Java 21 JDK
-      uses: actions/setup-java@v4
+    - name: Setup Python
+      uses: actions/setup-python@v5
       with:
-        java-version: '21'
-        distribution: 'temurin'
-        cache: 'maven'
+        python-version: '3.13'
 
-    - name: Build and Test Maven Project
-      run: mvn -B clean install
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Integration Tests
+      run: |
+        python scratch/verify_deep.py
       env:
-        SPRING_PROFILES_ACTIVE: test
+        DATABASE_URL: postgresql://postgres:postgrespassword@localhost:5432/eakip
+        REDIS_URL: redis://localhost:6379/0
