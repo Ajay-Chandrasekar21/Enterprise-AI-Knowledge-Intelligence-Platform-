@@ -1,2 +1,8 @@
+[project]
+name = "eakip-backend"
+version = "0.1.0"
+description = "EAKIP Python Backend Monolith"
+dependencies = []
+
 [tool.vercel]
 entrypoint = "eakip_api.src.eakip_api.main:app"
