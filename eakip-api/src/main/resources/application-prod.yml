@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://db-postgres:5432/eakip}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgrespassword}
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 10
+      idle-timeout: 600000
+      connection-timeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://db-mongo:27017/eakip}
+    redis:
+      host: ${REDIS_HOST:db-redis}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+  
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URIs:http://db-elasticsearch:9200}
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:db-rabbitmq}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guestpassword}
+
+  ai:
+    google:
+      gemini:
+        api-key: ${GEMINI_API_KEY}
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    access-token-expiration: 900000 # 15 mins
+    refresh-token-expiration: 604800000 # 7 days
+
+logging:
+  level:
+    root: INFO
+    com.enterprise.eakip: INFO
+    org.springframework.security: WARN

@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "eakip_rag"
+version = "1.0.0"
+description = "EAKIP Knowledge RAG and pgvector Database Indexes"
+authors = ["Antigravity"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^2.0.0"
+sqlalchemy = "^2.0.0"
+redis = "^5.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
