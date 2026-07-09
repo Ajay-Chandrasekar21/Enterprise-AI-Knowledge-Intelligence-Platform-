@@ -1,3 +1,15 @@
+import sys
+import os
+
+# Dynamic PYTHONPATH injection for portable deployments (e.g. Vercel, docker, CI/CD)
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+sys.path.append(os.path.join(root_dir, "eakip_core/src"))
+sys.path.append(os.path.join(root_dir, "eakip_security/src"))
+sys.path.append(os.path.join(root_dir, "eakip_document_processing/src"))
+sys.path.append(os.path.join(root_dir, "eakip_rag/src"))
+sys.path.append(os.path.join(root_dir, "eakip_agent_orchestrator/src"))
+sys.path.append(os.path.join(root_dir, "eakip_analytics/src"))
+
 import logging
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware

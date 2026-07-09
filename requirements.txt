@@ -13,11 +13,3 @@ apscheduler==3.11.3
 alembic==1.18.5
 email-validator==2.2.0
 requests==2.34.2
-./eakip_core
-./eakip_security
-./eakip_document_processing
-./eakip_rag
-./eakip_agent_orchestrator
-./eakip_analytics
-./eakip_api
-
