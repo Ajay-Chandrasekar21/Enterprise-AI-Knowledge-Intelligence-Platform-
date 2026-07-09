@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "eakip_api.src.eakip_api.main:app"
