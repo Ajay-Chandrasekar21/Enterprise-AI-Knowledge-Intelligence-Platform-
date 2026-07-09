@@ -60,39 +60,39 @@ export const Profile: React.FC = () => {
   };
 
   return (
-    <div class="space-y-6 max-w-4xl">
+    <div className="space-y-6 max-w-4xl">
       <div>
-        <h1 class="text-2xl font-bold">Profile Settings</h1>
-        <p class="text-slate-500 text-sm">Update personal parameters, department alignments, and reading interests tags</p>
+        <h1 className="text-2xl font-bold">Profile Settings</h1>
+        <p className="text-slate-500 text-sm">Update personal parameters, department alignments, and reading interests tags</p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Profile Card */}
-        <Card class="p-6 lg:col-span-1 text-center space-y-4">
-          <div class="h-20 w-20 mx-auto rounded-full bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 font-extrabold text-2xl">
+        <Card className="p-6 lg:col-span-1 text-center space-y-4">
+          <div className="h-20 w-20 mx-auto rounded-full bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 font-extrabold text-2xl">
             {user?.username.substring(0, 2).toUpperCase()}
           </div>
           <div>
-            <h3 class="font-bold text-lg">{profile?.firstName} {profile?.lastName}</h3>
-            <p class="text-xs text-slate-400">@{user?.username}</p>
+            <h3 className="font-bold text-lg">{profile?.firstName} {profile?.lastName}</h3>
+            <p className="text-xs text-slate-400">@{user?.username}</p>
           </div>
-          <div class="py-2 border-t border-b border-slate-200/50 dark:border-slate-800/40 text-left space-y-2 text-xs font-semibold">
-            <div class="flex items-center space-x-2 text-slate-500">
-              <Shield class="h-4 w-4" />
+          <div className="py-2 border-t border-b border-slate-200/50 dark:border-slate-800/40 text-left space-y-2 text-xs font-semibold">
+            <div className="flex items-center space-x-2 text-slate-500">
+              <Shield className="h-4 w-4" />
               <span>Library Card: {profile?.libraryCardNumber || 'N/A'}</span>
             </div>
-            <div class="flex items-center space-x-2 text-slate-500">
-              <Award class="h-4 w-4" />
+            <div className="flex items-center space-x-2 text-slate-500">
+              <Award className="h-4 w-4" />
               <span>Clearance: {user?.role}</span>
             </div>
           </div>
         </Card>
 
         {/* Profile details form */}
-        <Card class="p-6 lg:col-span-2">
-          <form onSubmit={handleSubmit(onSubmit)} class="space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Card className="p-6 lg:col-span-2">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 label="First Name"
                 type="text"
@@ -114,8 +114,8 @@ export const Profile: React.FC = () => {
               {...register('department')}
             />
 
-            <div class="flex flex-col space-y-1.5">
-              <label class="text-xs font-semibold text-slate-500 dark:text-slate-400">Reading Interests (Comma-separated)</label>
+            <div className="flex flex-col space-y-1.5">
+              <label className="text-xs font-semibold text-slate-500 dark:text-slate-400">Reading Interests (Comma-separated)</label>
               <textarea
                 className="w-full px-4 py-2.5 rounded-xl border bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all min-h-24"
                 placeholder="e.g. Algorithms, Machine Learning, Compiler Design"
@@ -123,7 +123,7 @@ export const Profile: React.FC = () => {
               />
             </div>
 
-            <div class="pt-4 flex justify-end">
+            <div className="pt-4 flex justify-end">
               <Button type="submit" isLoading={isUpdating}>
                 Save Profile
               </Button>

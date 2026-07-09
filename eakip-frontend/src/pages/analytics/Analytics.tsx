@@ -58,26 +58,26 @@ export const Analytics: React.FC = () => {
   };
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       <div>
-        <h1 class="text-2xl font-bold">Analytics & Audits</h1>
-        <p class="text-slate-500 text-sm">Monitor system audit indexes, check logs, and retrieve operational exports</p>
+        <h1 className="text-2xl font-bold">Analytics & Audits</h1>
+        <p className="text-slate-500 text-sm">Monitor system audit indexes, check logs, and retrieve operational exports</p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Weekly activity hours */}
-        <Card class="p-6 lg:col-span-2">
-          <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase">Reading Habits Trajectory</h3>
-          <div class="h-64 flex items-center justify-center">
+        <Card className="p-6 lg:col-span-2">
+          <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase">Reading Habits Trajectory</h3>
+          <div className="h-64 flex items-center justify-center">
             <Line data={lineData} options={{ responsive: true, maintainAspectRatio: false }} />
           </div>
         </Card>
 
         {/* Categories distribution */}
-        <Card class="p-6 lg:col-span-1">
-          <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase">Reading Preferences Distribution</h3>
-          <div class="h-64 flex items-center justify-center">
+        <Card className="p-6 lg:col-span-1">
+          <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase">Reading Preferences Distribution</h3>
+          <div className="h-64 flex items-center justify-center">
             <Doughnut data={donutData} options={{ responsive: true, maintainAspectRatio: false }} />
           </div>
         </Card>
@@ -86,20 +86,20 @@ export const Analytics: React.FC = () => {
 
       {/* Exporter Block for Admins & Librarians */}
       {(user?.role === 'ADMIN' || user?.role === 'LIBRARIAN') && (
-        <Card class="p-6 space-y-4">
-          <div class="flex items-center space-x-2 text-primary-600 dark:text-primary-400">
-            <Activity class="h-5 w-5" />
-            <h3 class="font-bold text-base">Administrative Exporters</h3>
+        <Card className="p-6 space-y-4">
+          <div className="flex items-center space-x-2 text-primary-600 dark:text-primary-400">
+            <Activity className="h-5 w-5" />
+            <h3 className="font-bold text-base">Administrative Exporters</h3>
           </div>
-          <p class="text-slate-500 text-sm">Download complete transactional audits and catalog indexes mapping database statistics as CSV files.</p>
-          <div class="flex flex-wrap gap-4 pt-2">
+          <p className="text-slate-500 text-sm">Download complete transactional audits and catalog indexes mapping database statistics as CSV files.</p>
+          <div className="flex flex-wrap gap-4 pt-2">
             <Button 
               onClick={() => handleCsvExport('books')} 
               isLoading={isExporting} 
               variant="outline" 
               className="flex items-center space-x-2"
             >
-              <FileDown class="h-4 w-4" />
+              <FileDown className="h-4 w-4" />
               <span>Export Books Catalog (CSV)</span>
             </Button>
             <Button 
@@ -108,7 +108,7 @@ export const Analytics: React.FC = () => {
               variant="outline" 
               className="flex items-center space-x-2"
             >
-              <FileDown class="h-4 w-4" />
+              <FileDown className="h-4 w-4" />
               <span>Export Borrowings Logs (CSV)</span>
             </Button>
           </div>

@@ -39,19 +39,19 @@ export const SemanticSearchUI: React.FC = () => {
   };
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       
       {/* Header */}
       <div>
-        <h1 class="text-2xl font-bold">Semantic Search</h1>
-        <p class="text-slate-500 text-sm">Query document libraries using vector embeddings similarity matching</p>
+        <h1 className="text-2xl font-bold">Semantic Search</h1>
+        <p className="text-slate-500 text-sm">Query document libraries using vector embeddings similarity matching</p>
       </div>
 
       {/* Query Bar */}
-      <Card class="p-6">
-        <div class="flex items-center space-x-4">
-          <div class="relative flex-grow">
-            <Search class="absolute left-3.5 top-3.5 h-5 w-5 text-slate-400" />
+      <Card className="p-6">
+        <div className="flex items-center space-x-4">
+          <div className="relative flex-grow">
+            <Search className="absolute left-3.5 top-3.5 h-5 w-5 text-slate-400" />
             <input
               type="text"
               placeholder="Query library semantically (e.g. how do high-level policies control flow directions?)..."
@@ -68,26 +68,26 @@ export const SemanticSearchUI: React.FC = () => {
 
       {/* Results grid */}
       {results.length > 0 && (
-        <div class="space-y-4">
-          <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Semantic Matches and Page Citations</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-4">
+          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Semantic Matches and Page Citations</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {results.map((res, idx) => (
-              <Card key={idx} class="p-6 space-y-4 relative overflow-hidden flex flex-col justify-between">
+              <Card key={idx} className="p-6 space-y-4 relative overflow-hidden flex flex-col justify-between">
                 {/* Badge */}
-                <div class="flex justify-between items-center text-xs">
-                  <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md font-semibold text-slate-500 flex items-center space-x-1">
-                    <FileText class="h-3.5 w-3.5" />
+                <div className="flex justify-between items-center text-xs">
+                  <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md font-semibold text-slate-500 flex items-center space-x-1">
+                    <FileText className="h-3.5 w-3.5" />
                     <span>{res.sourceFile}</span>
                   </span>
-                  <span class="text-green-600 font-bold">Cosine score: {(res.score * 100).toFixed(1)}%</span>
+                  <span className="text-green-600 font-bold">Cosine score: {(res.score * 100).toFixed(1)}%</span>
                 </div>
 
-                <p class="text-xs text-slate-600 dark:text-slate-400 italic leading-relaxed mt-2 flex-grow">
+                <p className="text-xs text-slate-600 dark:text-slate-400 italic leading-relaxed mt-2 flex-grow">
                   "{res.content}"
                 </p>
 
-                <div class="pt-4 border-t border-slate-100 dark:border-slate-800/60 flex items-center space-x-2 text-[10px] text-slate-400 uppercase font-bold">
-                  <ShieldCheck class="h-4 w-4 text-green-500" />
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800/60 flex items-center space-x-2 text-[10px] text-slate-400 uppercase font-bold">
+                  <ShieldCheck className="h-4 w-4 text-green-500" />
                   <span>Hallucination check: PASS</span>
                 </div>
               </Card>

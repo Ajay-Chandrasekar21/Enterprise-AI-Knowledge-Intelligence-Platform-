@@ -35,25 +35,25 @@ export const LibrarianDashboard: React.FC = () => {
   };
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       <div>
-        <h1 class="text-2xl font-bold">Librarian Operations Console</h1>
-        <p class="text-slate-500 text-sm">Monitor catalog acquisitions, processing pipelines, and checkouts</p>
+        <h1 className="text-2xl font-bold">Librarian Operations Console</h1>
+        <p className="text-slate-500 text-sm">Monitor catalog acquisitions, processing pipelines, and checkouts</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {statCards.map((card, idx) => {
           const Icon = card.icon;
           return (
-            <Card key={idx} class="p-6">
-              <div class="flex items-center justify-between">
-                <div class="space-y-1">
-                  <span class="text-xs font-semibold text-slate-500 uppercase">{card.title}</span>
-                  <h3 class="text-2xl font-bold">{card.value}</h3>
-                  <span class="text-xs text-slate-400 block">{card.change}</span>
+            <Card key={idx} className="p-6">
+              <div className="flex items-center justify-between">
+                <div className="space-y-1">
+                  <span className="text-xs font-semibold text-slate-500 uppercase">{card.title}</span>
+                  <h3 className="text-2xl font-bold">{card.value}</h3>
+                  <span className="text-xs text-slate-400 block">{card.change}</span>
                 </div>
-                <div class={`h-12 w-12 rounded-xl flex items-center justify-center ${card.color}`}>
-                  <Icon class="h-6 w-6" />
+                <div className={`h-12 w-12 rounded-xl flex items-center justify-center ${card.color}`}>
+                  <Icon className="h-6 w-6" />
                 </div>
               </div>
             </Card>
@@ -61,17 +61,17 @@ export const LibrarianDashboard: React.FC = () => {
         })}
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card class="p-6 lg:col-span-1">
-          <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase">Document Ingestion Share</h3>
-          <div class="h-64 flex items-center justify-center">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <Card className="p-6 lg:col-span-1">
+          <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase">Document Ingestion Share</h3>
+          <div className="h-64 flex items-center justify-center">
             <Doughnut data={doughnutData} options={{ responsive: true, maintainAspectRatio: false }} />
           </div>
         </Card>
 
-        <Card class="p-6 lg:col-span-2">
-          <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase">Catalog Scaling Trajectory</h3>
-          <div class="h-64 flex items-center justify-center">
+        <Card className="p-6 lg:col-span-2">
+          <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase">Catalog Scaling Trajectory</h3>
+          <div className="h-64 flex items-center justify-center">
             <Bar data={inventoryData} options={{ responsive: true, maintainAspectRatio: false }} />
           </div>
         </Card>

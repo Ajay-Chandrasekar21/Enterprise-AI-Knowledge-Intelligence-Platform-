@@ -68,11 +68,11 @@ export const BorrowedBooks: React.FC = () => {
 
   const columns = [
     { header: 'Book Title', accessor: (row: BorrowingItem) => (
-      <div class="flex items-center space-x-3">
-        <BookOpen class="h-5 w-5 text-slate-400" />
+      <div className="flex items-center space-x-3">
+        <BookOpen className="h-5 w-5 text-slate-400" />
         <div>
-          <p class="font-medium text-slate-800 dark:text-slate-200">{row.bookTitle}</p>
-          <span class="text-xs text-slate-400">{row.isbn}</span>
+          <p className="font-medium text-slate-800 dark:text-slate-200">{row.bookTitle}</p>
+          <span className="text-xs text-slate-400">{row.isbn}</span>
         </div>
       </div>
     ) },
@@ -84,31 +84,31 @@ export const BorrowedBooks: React.FC = () => {
         RETURNED: 'bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400',
         OVERDUE: 'bg-red-50 text-red-700 dark:bg-red-950/20 dark:text-red-400',
       };
-      return <span class={`px-2.5 py-1 rounded-md text-xs font-semibold uppercase ${styles[row.status]}`}>{row.status}</span>;
+      return <span className={`px-2.5 py-1 rounded-md text-xs font-semibold uppercase ${styles[row.status]}`}>{row.status}</span>;
     } },
     { header: 'Renewals', accessor: (row: BorrowingItem) => <span>{row.renewalCount} / 2</span> },
     { header: 'Actions', accessor: (row: BorrowingItem) => (
       row.status !== 'RETURNED' ? (
-        <div class="flex items-center space-x-2">
+        <div className="flex items-center space-x-2">
           <Button variant="outline" size="sm" className="px-3 py-1.5 text-xs" onClick={() => handleRenew(row.id)}>Renew</Button>
           <Button variant="primary" size="sm" className="px-3 py-1.5 text-xs" onClick={() => handleReturn(row.id)}>Return</Button>
         </div>
       ) : (
-        <span class="text-xs text-slate-400">Transaction completed</span>
+        <span className="text-xs text-slate-400">Transaction completed</span>
       )
     ) },
   ];
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       <div>
-        <h1 class="text-2xl font-bold">My Active Checkouts</h1>
-        <p class="text-slate-500 text-sm">Manage borrowing renewals, check active deadlines, and review return receipts</p>
+        <h1 className="text-2xl font-bold">My Active Checkouts</h1>
+        <p className="text-slate-500 text-sm">Manage borrowing renewals, check active deadlines, and review return receipts</p>
       </div>
 
-      <Card class="p-6">
+      <Card className="p-6">
         {isLoading ? (
-          <div class="py-12 flex justify-center"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div></div>
+          <div className="py-12 flex justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div></div>
         ) : (
           <Table columns={columns} data={borrowings} />
         )}

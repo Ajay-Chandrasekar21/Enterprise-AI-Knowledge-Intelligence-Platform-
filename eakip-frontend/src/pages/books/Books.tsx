@@ -47,20 +47,20 @@ export const Books: React.FC = () => {
 
   const columns = [
     { header: 'Title', accessor: (row: BookItem) => (
-      <div class="flex items-center space-x-3">
-        <Book class="h-5 w-5 text-slate-400" />
-        <span class="font-medium text-slate-800 dark:text-slate-200">{row.title}</span>
+      <div className="flex items-center space-x-3">
+        <Book className="h-5 w-5 text-slate-400" />
+        <span className="font-medium text-slate-800 dark:text-slate-200">{row.title}</span>
       </div>
     ) },
     { header: 'ISBN', accessor: (row: BookItem) => <span>{row.isbn}</span> },
-    { header: 'Category', accessor: (row: BookItem) => <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md text-xs font-semibold">{row.category}</span> },
+    { header: 'Category', accessor: (row: BookItem) => <span className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md text-xs font-semibold">{row.category}</span> },
     { header: 'Available Copies', accessor: (row: BookItem) => (
-      <span class={row.availableCopies > 0 ? 'text-green-600 font-semibold' : 'text-red-500 font-semibold'}>
+      <span className={row.availableCopies > 0 ? 'text-green-600 font-semibold' : 'text-red-500 font-semibold'}>
         {row.availableCopies} / {row.totalCopies}
       </span>
     ) },
     { header: 'Actions', accessor: (row: BookItem) => (
-      <div class="flex items-center space-x-2">
+      <div className="flex items-center space-x-2">
         <Button variant="outline" size="sm" className="py-1 px-3 text-xs" disabled={row.availableCopies === 0}>Borrow</Button>
         <Button variant="secondary" size="sm" className="py-1 px-3 text-xs">Reserve</Button>
       </div>
@@ -68,22 +68,22 @@ export const Books: React.FC = () => {
   ];
 
   return (
-    <div class="space-y-6">
-      <div class="flex justify-between items-center">
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl font-bold">Catalog Index</h1>
-          <p class="text-slate-500 text-sm">Search database indices and manage catalog checkouts</p>
+          <h1 className="text-2xl font-bold">Catalog Index</h1>
+          <p className="text-slate-500 text-sm">Search database indices and manage catalog checkouts</p>
         </div>
         <Button className="flex items-center space-x-2">
-          <Plus class="h-4 w-4" />
+          <Plus className="h-4 w-4" />
           <span>Add Book</span>
         </Button>
       </div>
 
-      <Card class="p-6">
-        <div class="flex items-center space-x-4 mb-6">
-          <div class="relative flex-grow">
-            <Search class="absolute left-3.5 top-3 h-5 w-5 text-slate-400" />
+      <Card className="p-6">
+        <div className="flex items-center space-x-4 mb-6">
+          <div className="relative flex-grow">
+            <Search className="absolute left-3.5 top-3 h-5 w-5 text-slate-400" />
             <input
               type="text"
               placeholder="Search by title, author, or ISBN..."
@@ -95,7 +95,7 @@ export const Books: React.FC = () => {
         </div>
 
         {isLoading ? (
-          <div class="py-12 flex justify-center"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div></div>
+          <div className="py-12 flex justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div></div>
         ) : (
           <Table columns={columns} data={books} />
         )}

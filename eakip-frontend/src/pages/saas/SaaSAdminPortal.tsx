@@ -105,15 +105,15 @@ export const SaaSAdminPortal: React.FC = () => {
 
   const tenantColumns = [
     { header: 'Tenant Name', accessor: (row: TenantItem) => (
-      <div class="flex items-center space-x-3">
-        <Building class="h-5 w-5 text-slate-400" />
-        <span class="font-medium text-slate-800 dark:text-slate-200">{row.name}</span>
+      <div className="flex items-center space-x-3">
+        <Building className="h-5 w-5 text-slate-400" />
+        <span className="font-medium text-slate-800 dark:text-slate-200">{row.name}</span>
       </div>
     ) },
     { header: 'Primary Color', accessor: (row: TenantItem) => (
-      <div class="flex items-center space-x-2">
-        <span class="h-4 w-4 rounded-full border border-slate-200" style={{ backgroundColor: row.brandingPrimaryColor }}></span>
-        <span class="text-xs text-slate-400 font-mono">{row.brandingPrimaryColor}</span>
+      <div className="flex items-center space-x-2">
+        <span className="h-4 w-4 rounded-full border border-slate-200" style={{ backgroundColor: row.brandingPrimaryColor }}></span>
+        <span className="text-xs text-slate-400 font-mono">{row.brandingPrimaryColor}</span>
       </div>
     ) },
     { header: 'Isolation Status', accessor: (row: TenantItem) => (
@@ -124,32 +124,32 @@ export const SaaSAdminPortal: React.FC = () => {
   ];
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       
       {/* Header */}
-      <div class="flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl font-bold">Global SaaS Admin Portal</h1>
-          <p class="text-slate-500 text-sm">Manage database isolation tenants, track token usages, check billing, and toggle SaaS feature flags</p>
+          <h1 className="text-2xl font-bold">Global SaaS Admin Portal</h1>
+          <p className="text-slate-500 text-sm">Manage database isolation tenants, track token usages, check billing, and toggle SaaS feature flags</p>
         </div>
 
         {/* Tab navigation */}
-        <div class="flex bg-slate-100 dark:bg-slate-800/40 p-1 rounded-xl space-x-1 text-xs font-medium">
+        <div className="flex bg-slate-100 dark:bg-slate-800/40 p-1 rounded-xl space-x-1 text-xs font-medium">
           <button 
             onClick={() => setActiveTab('tenants')} 
-            class={`px-4 py-2 rounded-lg transition-all ${activeTab === 'tenants' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
+            className={`px-4 py-2 rounded-lg transition-all ${activeTab === 'tenants' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
           >
             Workspaces
           </button>
           <button 
             onClick={() => setActiveTab('billing')} 
-            class={`px-4 py-2 rounded-lg transition-all ${activeTab === 'billing' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
+            className={`px-4 py-2 rounded-lg transition-all ${activeTab === 'billing' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
           >
             Cost & Usage
           </button>
           <button 
             onClick={() => setActiveTab('flags')} 
-            class={`px-4 py-2 rounded-lg transition-all ${activeTab === 'flags' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
+            className={`px-4 py-2 rounded-lg transition-all ${activeTab === 'flags' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
           >
             Feature Flags
           </button>
@@ -157,26 +157,26 @@ export const SaaSAdminPortal: React.FC = () => {
       </div>
 
       {activeTab === 'tenants' && (
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Tenants list */}
-          <Card class="p-6 lg:col-span-2">
-            <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-              <Building class="h-4 w-4" />
+          <Card className="p-6 lg:col-span-2">
+            <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+              <Building className="h-4 w-4" />
               <span>Workspace Tenants Isolation Logs</span>
             </h3>
             <Table columns={tenantColumns} data={tenants} />
           </Card>
 
           {/* New tenant form */}
-          <Card class="p-6 lg:col-span-1">
-            <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-              <Palette class="h-4 w-4" />
+          <Card className="p-6 lg:col-span-1">
+            <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+              <Palette className="h-4 w-4" />
               <span>Register Tenant</span>
             </h3>
             
-            <form onSubmit={handleCreateTenant} class="space-y-4 text-xs font-semibold">
-              <div class="space-y-1">
-                <label class="block text-slate-400">Workspace Tenant Name</label>
+            <form onSubmit={handleCreateTenant} className="space-y-4 text-xs font-semibold">
+              <div className="space-y-1">
+                <label className="block text-slate-400">Workspace Tenant Name</label>
                 <input 
                   type="text" 
                   value={tenantName} 
@@ -186,8 +186,8 @@ export const SaaSAdminPortal: React.FC = () => {
                 />
               </div>
 
-              <div class="space-y-1">
-                <label class="block text-slate-400 font-bold">Theme Branding Primary Color (Hex)</label>
+              <div className="space-y-1">
+                <label className="block text-slate-400 font-bold">Theme Branding Primary Color (Hex)</label>
                 <input 
                   type="color" 
                   value={primaryColor} 
@@ -205,57 +205,57 @@ export const SaaSAdminPortal: React.FC = () => {
       )}
 
       {activeTab === 'billing' && invoice && (
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Cost stats */}
-          <Card class="p-6 flex items-center space-x-4">
-            <div class="h-12 w-12 rounded-xl bg-green-50 dark:bg-green-950/20 text-green-600 dark:text-green-400 flex items-center justify-center">
-              <DollarSign class="h-6 w-6" />
+          <Card className="p-6 flex items-center space-x-4">
+            <div className="h-12 w-12 rounded-xl bg-green-50 dark:bg-green-950/20 text-green-600 dark:text-green-400 flex items-center justify-center">
+              <DollarSign className="h-6 w-6" />
             </div>
             <div>
-              <h4 class="text-sm font-bold">Monthly Estimated Cost</h4>
-              <p class="text-xl font-extrabold text-slate-800 dark:text-slate-100">${invoice.estimatedCost.toFixed(2)}</p>
-              <p class="text-[10px] text-slate-400">Tier: {invoice.planTier}</p>
+              <h4 className="text-sm font-bold">Monthly Estimated Cost</h4>
+              <p className="text-xl font-extrabold text-slate-800 dark:text-slate-100">${invoice.estimatedCost.toFixed(2)}</p>
+              <p className="text-[10px] text-slate-400">Tier: {invoice.planTier}</p>
             </div>
           </Card>
 
           {/* Token usage */}
-          <Card class="p-6 flex items-center space-x-4">
-            <div class="h-12 w-12 rounded-xl bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-              <Cpu class="h-6 w-6" />
+          <Card className="p-6 flex items-center space-x-4">
+            <div className="h-12 w-12 rounded-xl bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <Cpu className="h-6 w-6" />
             </div>
             <div>
-              <h4 class="text-sm font-bold">Consumed Quota Tokens</h4>
-              <p class="text-xl font-extrabold text-slate-800 dark:text-slate-100">{(invoice.consumedTokens / 1000).toFixed(0)}k</p>
-              <p class="text-[10px] text-slate-400">Limit: {(invoice.quotaLimit / 1000000).toFixed(0)}M tokens</p>
+              <h4 className="text-sm font-bold">Consumed Quota Tokens</h4>
+              <p className="text-xl font-extrabold text-slate-800 dark:text-slate-100">{(invoice.consumedTokens / 1000).toFixed(0)}k</p>
+              <p className="text-[10px] text-slate-400">Limit: {(invoice.quotaLimit / 1000000).toFixed(0)}M tokens</p>
             </div>
           </Card>
 
           {/* Quota Progress */}
-          <Card class="p-6 space-y-2 flex flex-col justify-center">
-            <div class="flex justify-between items-center text-xs font-bold">
+          <Card className="p-6 space-y-2 flex flex-col justify-center">
+            <div className="flex justify-between items-center text-xs font-bold">
               <span>Token Quota Usage Percentage</span>
               <span>{((invoice.consumedTokens / invoice.quotaLimit) * 100).toFixed(1)}%</span>
             </div>
-            <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
-              <div class="bg-primary-600 h-2 rounded-full" style={{ width: `${(invoice.consumedTokens / invoice.quotaLimit) * 100}%` }}></div>
+            <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
+              <div className="bg-primary-600 h-2 rounded-full" style={{ width: `${(invoice.consumedTokens / invoice.quotaLimit) * 100}%` }}></div>
             </div>
           </Card>
         </div>
       )}
 
       {activeTab === 'flags' && (
-        <Card class="p-6 space-y-4">
-          <h3 class="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
-            <ToggleLeft class="h-4 w-4" />
+        <Card className="p-6 space-y-4">
+          <h3 className="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
+            <ToggleLeft className="h-4 w-4" />
             <span>SaaS Tenant Feature Flags</span>
           </h3>
 
-          <div class="divide-y divide-slate-100 dark:divide-slate-800/60">
+          <div className="divide-y divide-slate-100 dark:divide-slate-800/60">
             {Object.entries(flags).map(([key, enabled]) => (
-              <div key={key} class="py-4 flex justify-between items-center text-xs font-semibold">
+              <div key={key} className="py-4 flex justify-between items-center text-xs font-semibold">
                 <div>
-                  <h4 class="text-slate-800 dark:text-slate-200 capitalize">{key.replace(/([A-Z])/g, ' $1')}</h4>
-                  <p class="text-[10px] text-slate-400 mt-0.5">Enforces rate limit isolation rules block</p>
+                  <h4 className="text-slate-800 dark:text-slate-200 capitalize">{key.replace(/([A-Z])/g, ' $1')}</h4>
+                  <p className="text-[10px] text-slate-400 mt-0.5">Enforces rate limit isolation rules block</p>
                 </div>
                 <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${enabled ? 'bg-green-50 text-green-700' : 'bg-slate-100 text-slate-700'}`}>
                   {enabled ? 'ENABLED' : 'DISABLED'}

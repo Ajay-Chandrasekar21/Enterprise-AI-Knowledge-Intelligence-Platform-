@@ -94,19 +94,19 @@ export const PlanningDashboard: React.FC = () => {
   };
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       
       {/* Header */}
       <div>
-        <h1 class="text-2xl font-bold">Planning & Reasoning Engine</h1>
-        <p class="text-slate-500 text-sm">Visualize multi-agent task execution graphs, Chain-of-Thought reasonings, and self-reflections</p>
+        <h1 className="text-2xl font-bold">Planning & Reasoning Engine</h1>
+        <p className="text-slate-500 text-sm">Visualize multi-agent task execution graphs, Chain-of-Thought reasonings, and self-reflections</p>
       </div>
 
       {/* Goal Query Box */}
-      <Card class="p-6">
-        <div class="flex items-center space-x-4">
-          <div class="relative flex-grow">
-            <GitCommit class="absolute left-3.5 top-3.5 h-5 w-5 text-slate-400" />
+      <Card className="p-6">
+        <div className="flex items-center space-x-4">
+          <div className="relative flex-grow">
+            <GitCommit className="absolute left-3.5 top-3.5 h-5 w-5 text-slate-400" />
             <input
               type="text"
               placeholder="Submit an instruction to compile an agent plan (e.g. Find Java interview preparation books)..."
@@ -122,32 +122,32 @@ export const PlanningDashboard: React.FC = () => {
       </Card>
 
       {nodes.length > 0 && (
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Execution Graph Visualizer */}
-          <Card class="p-6 lg:col-span-2 space-y-4">
-            <h3 class="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
-              <Activity class="h-4 w-4" />
+          <Card className="p-6 lg:col-span-2 space-y-4">
+            <h3 className="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
+              <Activity className="h-4 w-4" />
               <span>Workflow Task Graph</span>
             </h3>
 
-            <div class="bg-slate-900 rounded-xl p-6 min-h-[300px] flex flex-col justify-center space-y-6 relative overflow-hidden">
-              <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div className="bg-slate-900 rounded-xl p-6 min-h-[300px] flex flex-col justify-center space-y-6 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
               
-              <div class="relative z-10 space-y-8">
+              <div className="relative z-10 space-y-8">
                 {/* Nodes mapping */}
-                <div class="flex flex-wrap justify-center gap-6">
+                <div className="flex flex-wrap justify-center gap-6">
                   {nodes.map((node) => (
                     <div 
                       key={node.id} 
                       className="p-4 bg-slate-800 border border-slate-700/80 rounded-xl w-[200px] text-xs space-y-2 hover:scale-105 transition-transform"
                     >
-                      <div class="flex justify-between items-center">
-                        <span class="px-2 py-0.5 bg-slate-700 text-slate-300 rounded text-[9px] font-bold uppercase">{node.type}</span>
-                        <CheckCircle2 class="h-4 w-4 text-green-500" />
+                      <div className="flex justify-between items-center">
+                        <span className="px-2 py-0.5 bg-slate-700 text-slate-300 rounded text-[9px] font-bold uppercase">{node.type}</span>
+                        <CheckCircle2 className="h-4 w-4 text-green-500" />
                       </div>
-                      <h4 class="font-bold text-white">{node.label}</h4>
-                      <p class="text-[10px] text-slate-400">{node.assignedAgent}</p>
+                      <h4 className="font-bold text-white">{node.label}</h4>
+                      <p className="text-[10px] text-slate-400">{node.assignedAgent}</p>
                     </div>
                   ))}
                 </div>
@@ -156,21 +156,21 @@ export const PlanningDashboard: React.FC = () => {
           </Card>
 
           {/* Reasoning & Reflection Viewer */}
-          <div class="lg:col-span-1 space-y-6">
+          <div className="lg:col-span-1 space-y-6">
             
             {/* Reasoning steps */}
-            <Card class="p-6 space-y-4">
-              <h3 class="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
-                <Compass class="h-4 w-4" />
+            <Card className="p-6 space-y-4">
+              <h3 className="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
+                <Compass className="h-4 w-4" />
                 <span>Reasoning Chain (CoT)</span>
               </h3>
-              <div class="space-y-3">
+              <div className="space-y-3">
                 {reasoningSteps.map((step, idx) => (
-                  <div key={idx} class="flex items-start space-x-3 text-xs">
-                    <span class="h-5 w-5 rounded-full bg-primary-50 dark:bg-primary-950/40 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center flex-shrink-0">
+                  <div key={idx} className="flex items-start space-x-3 text-xs">
+                    <span className="h-5 w-5 rounded-full bg-primary-50 dark:bg-primary-950/40 text-primary-600 dark:text-primary-400 font-bold flex items-center justify-center flex-shrink-0">
                       {idx + 1}
                     </span>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed pt-0.5">{step}</p>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed pt-0.5">{step}</p>
                   </div>
                 ))}
               </div>
@@ -178,26 +178,26 @@ export const PlanningDashboard: React.FC = () => {
 
             {/* Reflection parameters */}
             {reflection && (
-              <Card class="p-6 space-y-4">
-                <h3 class="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
-                  <Eye class="h-4 w-4" />
+              <Card className="p-6 space-y-4">
+                <h3 className="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
+                  <Eye className="h-4 w-4" />
                   <span>Self-Evaluation Reflection</span>
                 </h3>
-                <div class="space-y-3 text-xs">
-                  <div class="flex justify-between items-center">
-                    <span class="text-slate-400 font-medium">Context Accuracy:</span>
-                    <span class="font-bold text-green-600">{(reflection.accuracy * 100).toFixed(0)}%</span>
+                <div className="space-y-3 text-xs">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-400 font-medium">Context Accuracy:</span>
+                    <span className="font-bold text-green-600">{(reflection.accuracy * 100).toFixed(0)}%</span>
                   </div>
-                  <div class="flex justify-between items-center">
-                    <span class="text-slate-400 font-medium">Completeness:</span>
-                    <span class="font-bold text-green-600">{(reflection.completeness * 100).toFixed(0)}%</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-400 font-medium">Completeness:</span>
+                    <span className="font-bold text-green-600">{(reflection.completeness * 100).toFixed(0)}%</span>
                   </div>
-                  <div class="flex justify-between items-center">
-                    <span class="text-slate-400 font-medium">Consistency:</span>
-                    <span class="font-bold text-green-600">{(reflection.consistency * 100).toFixed(0)}%</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-400 font-medium">Consistency:</span>
+                    <span className="font-bold text-green-600">{(reflection.consistency * 100).toFixed(0)}%</span>
                   </div>
-                  <div class="pt-2 border-t border-slate-100 dark:border-slate-800/60 flex items-center space-x-2 text-[10px] text-slate-400 uppercase font-bold">
-                    <CheckCircle2 class="h-4 w-4 text-green-500" />
+                  <div className="pt-2 border-t border-slate-100 dark:border-slate-800/60 flex items-center space-x-2 text-[10px] text-slate-400 uppercase font-bold">
+                    <CheckCircle2 className="h-4 w-4 text-green-500" />
                     <span>Evaluation Status: VALIDATED</span>
                   </div>
                 </div>
@@ -211,12 +211,12 @@ export const PlanningDashboard: React.FC = () => {
 
       {/* Consensus answer merges */}
       {consensusResult && (
-        <Card class="p-6 space-y-3">
-          <h3 class="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
-            <RefreshCw class="h-4 w-4" />
+        <Card className="p-6 space-y-3">
+          <h3 className="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
+            <RefreshCw className="h-4 w-4" />
             <span>Consensus Engine Merged Outputs</span>
           </h3>
-          <pre class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/40 text-xs font-mono leading-relaxed overflow-x-auto text-slate-600 dark:text-slate-300">
+          <pre className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800/40 text-xs font-mono leading-relaxed overflow-x-auto text-slate-600 dark:text-slate-300">
             {consensusResult}
           </pre>
         </Card>

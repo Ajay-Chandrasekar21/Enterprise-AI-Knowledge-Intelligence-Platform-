@@ -108,40 +108,40 @@ export const AiConsole: React.FC = () => {
   };
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       
       {/* Title */}
       <div>
-        <h1 class="text-2xl font-bold">Multi-Agent Runtime Console</h1>
-        <p class="text-slate-500 text-sm">Monitor workspace agent configurations, timeline executions, and engine telemetry</p>
+        <h1 className="text-2xl font-bold">Multi-Agent Runtime Console</h1>
+        <p className="text-slate-500 text-sm">Monitor workspace agent configurations, timeline executions, and engine telemetry</p>
       </div>
 
       {/* Main Console Layout */}
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Core Prompt Panel */}
-        <div class="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-6">
           
           {/* Prompt input */}
-          <Card class="p-6">
-            <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-              <Terminal class="h-4 w-4" />
+          <Card className="p-6">
+            <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+              <Terminal className="h-4 w-4" />
               <span>Submit Orchestrator Instruction</span>
             </h3>
-            <div class="space-y-4">
+            <div className="space-y-4">
               <textarea
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="e.g. Find clean architecture books in the catalog index..."
                 className="w-full px-4 py-3 rounded-xl border bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all min-h-24 font-mono text-xs"
               />
-              <div class="flex justify-end">
+              <div className="flex justify-end">
                 <Button 
                   onClick={handleExecute} 
                   isLoading={isExecuting}
                   className="flex items-center space-x-2"
                 >
-                  <Play class="h-4 w-4" />
+                  <Play className="h-4 w-4" />
                   <span>Execute Workflow</span>
                 </Button>
               </div>
@@ -150,29 +150,29 @@ export const AiConsole: React.FC = () => {
 
           {/* Execution Timeline / Workflow Viewer */}
           {steps.length > 0 && (
-            <Card class="p-6">
-              <h3 class="text-sm font-semibold mb-6 text-slate-500 uppercase flex items-center space-x-2">
-                <Compass class="h-4 w-4" />
+            <Card className="p-6">
+              <h3 className="text-sm font-semibold mb-6 text-slate-500 uppercase flex items-center space-x-2">
+                <Compass className="h-4 w-4" />
                 <span>Execution Timeline & Workflow Viewer</span>
               </h3>
-              <div class="space-y-6 relative border-l-2 border-slate-100 dark:border-slate-800/60 ml-3 pl-6">
+              <div className="space-y-6 relative border-l-2 border-slate-100 dark:border-slate-800/60 ml-3 pl-6">
                 {steps.map((step) => (
-                  <div key={step.step} class="relative">
+                  <div key={step.step} className="relative">
                     {/* Circle Node */}
-                    <div class={`absolute -left-[31px] top-0 h-4 w-4 rounded-full border-2 border-white dark:border-slate-950 ${
+                    <div className={`absolute -left-[31px] top-0 h-4 w-4 rounded-full border-2 border-white dark:border-slate-950 ${
                       step.status === 'COMPLETED' ? 'bg-green-500' :
                       step.status === 'EXECUTING' ? 'bg-blue-500 animate-pulse' :
                       step.status === 'FAILED' ? 'bg-red-500' : 'bg-slate-300'
                     }`} />
                     
-                    <div class="flex items-start justify-between text-xs">
+                    <div className="flex items-start justify-between text-xs">
                       <div>
-                        <h4 class="font-bold text-slate-800 dark:text-slate-200">
-                          {step.agentName} <span class="font-normal text-slate-400">(Step #{step.step})</span>
+                        <h4 className="font-bold text-slate-800 dark:text-slate-200">
+                          {step.agentName} <span className="font-normal text-slate-400">(Step #{step.step})</span>
                         </h4>
-                        <p class="text-slate-500 mt-1">{step.description}</p>
+                        <p className="text-slate-500 mt-1">{step.description}</p>
                       </div>
-                      <span class={`px-2 py-0.5 rounded-md text-[10px] font-semibold uppercase ${
+                      <span className={`px-2 py-0.5 rounded-md text-[10px] font-semibold uppercase ${
                         step.status === 'COMPLETED' ? 'bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400' :
                         step.status === 'EXECUTING' ? 'bg-blue-50 text-blue-700 dark:bg-blue-950/20 dark:text-blue-400' :
                         step.status === 'FAILED' ? 'bg-red-50 text-red-700 dark:bg-red-950/20 dark:text-red-400' :
@@ -189,80 +189,80 @@ export const AiConsole: React.FC = () => {
 
           {/* Compiled Output Result */}
           {result && (
-            <Card class="p-6 bg-slate-900 text-slate-100 border-none font-mono text-xs space-y-4">
-              <div class="flex justify-between items-center pb-2 border-b border-slate-800 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            <Card className="p-6 bg-slate-900 text-slate-100 border-none font-mono text-xs space-y-4">
+              <div className="flex justify-between items-center pb-2 border-b border-slate-800 text-[10px] font-bold uppercase tracking-wider text-slate-400">
                 <span>Orchestrated Combined Output</span>
-                <span class="text-green-400">Confidence: {(result.confidenceScore * 100).toFixed(0)}%</span>
+                <span className="text-green-400">Confidence: {(result.confidenceScore * 100).toFixed(0)}%</span>
               </div>
-              <p class="whitespace-pre-wrap leading-relaxed">{result.combinedResponse}</p>
+              <p className="whitespace-pre-wrap leading-relaxed">{result.combinedResponse}</p>
             </Card>
           )}
 
         </div>
 
         {/* Telemetry & System Status Sidebar */}
-        <div class="space-y-6">
+        <div className="space-y-6">
           
           {/* Telemetry Dashboard */}
-          <Card class="p-6 space-y-4">
-            <h3 class="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
-              <BarChart2 class="h-4 w-4" />
+          <Card className="p-6 space-y-4">
+            <h3 className="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
+              <BarChart2 className="h-4 w-4" />
               <span>Telemetry Dashboard</span>
             </h3>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl">
-                <span class="text-[10px] text-slate-400 uppercase font-semibold block">Total Tokens</span>
-                <span class="text-base font-bold">{telemetry?.totalTokens || 0}</span>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl">
+                <span className="text-[10px] text-slate-400 uppercase font-semibold block">Total Tokens</span>
+                <span className="text-base font-bold">{telemetry?.totalTokens || 0}</span>
               </div>
-              <div class="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl">
-                <span class="text-[10px] text-slate-400 uppercase font-semibold block">Total Requests</span>
-                <span class="text-base font-bold">{telemetry?.requestsCount || 0}</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl">
+                <span className="text-[10px] text-slate-400 uppercase font-semibold block">Total Requests</span>
+                <span className="text-base font-bold">{telemetry?.requestsCount || 0}</span>
               </div>
-              <div class="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl">
-                <span class="text-[10px] text-slate-400 uppercase font-semibold block">Failures Log</span>
-                <span class={`text-base font-bold ${telemetry && telemetry.failuresCount > 0 ? 'text-red-500' : ''}`}>
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl">
+                <span className="text-[10px] text-slate-400 uppercase font-semibold block">Failures Log</span>
+                <span className={`text-base font-bold ${telemetry && telemetry.failuresCount > 0 ? 'text-red-500' : ''}`}>
                   {telemetry?.failuresCount || 0}
                 </span>
               </div>
-              <div class="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl">
-                <span class="text-[10px] text-slate-400 uppercase font-semibold block">Avg Latency</span>
-                <span class="text-base font-bold">{telemetry?.averageLatencyMs || 0} ms</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl">
+                <span className="text-[10px] text-slate-400 uppercase font-semibold block">Avg Latency</span>
+                <span className="text-base font-bold">{telemetry?.averageLatencyMs || 0} ms</span>
               </div>
             </div>
           </Card>
 
           {/* Active Agents Status */}
-          <Card class="p-6 space-y-4">
-            <h3 class="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
-              <Cpu class="h-4 w-4" />
+          <Card className="p-6 space-y-4">
+            <h3 className="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
+              <Cpu className="h-4 w-4" />
               <span>Agent Monitor Registry</span>
             </h3>
-            <div class="space-y-3 text-xs">
-              <div class="flex justify-between items-center">
-                <span class="font-medium">BOOK_DISCOVERY_AGENT</span>
-                <span class="flex items-center space-x-1 text-green-600 font-semibold">
-                  <CheckCircle2 class="h-3.5 w-3.5" />
+            <div className="space-y-3 text-xs">
+              <div className="flex justify-between items-center">
+                <span className="font-medium">BOOK_DISCOVERY_AGENT</span>
+                <span className="flex items-center space-x-1 text-green-600 font-semibold">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
                   <span>Online</span>
                 </span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="font-medium">SUMMARIZER_AGENT</span>
-                <span class="flex items-center space-x-1 text-green-600 font-semibold">
-                  <CheckCircle2 class="h-3.5 w-3.5" />
+              <div className="flex justify-between items-center">
+                <span className="font-medium">SUMMARIZER_AGENT</span>
+                <span className="flex items-center space-x-1 text-green-600 font-semibold">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
                   <span>Online</span>
                 </span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="font-medium">ANALYTICS_AGENT</span>
-                <span class="flex items-center space-x-1 text-green-600 font-semibold">
-                  <CheckCircle2 class="h-3.5 w-3.5" />
+              <div className="flex justify-between items-center">
+                <span className="font-medium">ANALYTICS_AGENT</span>
+                <span className="flex items-center space-x-1 text-green-600 font-semibold">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
                   <span>Online</span>
                 </span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="font-medium">GENERAL_AGENT</span>
-                <span class="flex items-center space-x-1 text-green-600 font-semibold">
-                  <CheckCircle2 class="h-3.5 w-3.5" />
+              <div className="flex justify-between items-center">
+                <span className="font-medium">GENERAL_AGENT</span>
+                <span className="flex items-center space-x-1 text-green-600 font-semibold">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
                   <span>Online</span>
                 </span>
               </div>
@@ -270,10 +270,10 @@ export const AiConsole: React.FC = () => {
           </Card>
 
           {/* Console logger */}
-          <Card class="p-6 bg-slate-950 border-none text-slate-400 font-mono text-[10px] space-y-2 max-h-60 overflow-y-auto">
-            <h4 class="text-slate-500 font-bold uppercase tracking-wider mb-2">Live Console Stream</h4>
+          <Card className="p-6 bg-slate-950 border-none text-slate-400 font-mono text-[10px] space-y-2 max-h-60 overflow-y-auto">
+            <h4 className="text-slate-500 font-bold uppercase tracking-wider mb-2">Live Console Stream</h4>
             {consoleLogs.map((logStr, index) => (
-              <p key={index} class="leading-relaxed">{logStr}</p>
+              <p key={index} className="leading-relaxed">{logStr}</p>
             ))}
           </Card>
 

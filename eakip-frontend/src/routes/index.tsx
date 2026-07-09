@@ -40,14 +40,14 @@ const WorkflowDesigner = lazy(() => import('@/pages/workflow/WorkflowDesigner').
 const SaaSAdminPortal = lazy(() => import('@/pages/saas/SaaSAdminPortal').then((m) => ({ default: m.SaaSAdminPortal })));
 
 const Settings = () => (
-  <div class="p-6 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/40 rounded-2xl">
-    <h1 class="text-xl font-bold mb-2">System Settings</h1>
-    <p class="text-slate-500 text-xs">Platform settings, color schemes preferences, and API keys.</p>
+  <div className="p-6 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/40 rounded-2xl">
+    <h1 className="text-xl font-bold mb-2">System Settings</h1>
+    <p className="text-slate-500 text-xs">Platform settings, color schemes preferences, and API keys.</p>
   </div>
 );
 
 const LoadingFallback = () => (
-  <div class="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+  <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
     <Spinner size="lg" />
   </div>
 );
@@ -60,9 +60,9 @@ export const AppRoutes: React.FC = () => {
         {/* Public Routes */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Landing />} />
-          <Route path="/about" element={<div class="p-8 max-w-4xl mx-auto"><h1 class="text-2xl font-bold">About EAKIP</h1></div>} />
-          <Route path="/features" element={<div class="p-8 max-w-4xl mx-auto"><h1 class="text-2xl font-bold">Platform Features</h1></div>} />
-          <Route path="/contact" element={<div class="p-8 max-w-4xl mx-auto"><h1 class="text-2xl font-bold">Contact Support</h1></div>} />
+          <Route path="/about" element={<div className="p-8 max-w-4xl mx-auto"><h1 className="text-2xl font-bold">About EAKIP</h1></div>} />
+          <Route path="/features" element={<div className="p-8 max-w-4xl mx-auto"><h1 className="text-2xl font-bold">Platform Features</h1></div>} />
+          <Route path="/contact" element={<div className="p-8 max-w-4xl mx-auto"><h1 className="text-2xl font-bold">Contact Support</h1></div>} />
         </Route>
 
         {/* Auth routes */}

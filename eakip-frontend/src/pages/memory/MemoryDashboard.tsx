@@ -75,41 +75,41 @@ export const MemoryDashboard: React.FC = () => {
   };
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       
       {/* Header */}
       <div>
-        <h1 class="text-2xl font-bold">Learning & Memory Center</h1>
-        <p class="text-slate-500 text-sm">Review episodic memory timelines, set explicit learning interests, and submit feedback scores</p>
+        <h1 className="text-2xl font-bold">Learning & Memory Center</h1>
+        <p className="text-slate-500 text-sm">Review episodic memory timelines, set explicit learning interests, and submit feedback scores</p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Memory Timeline */}
-        <div class="lg:col-span-2 space-y-6">
-          <Card class="p-6">
-            <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-              <Clock class="h-4 w-4" />
+        <div className="lg:col-span-2 space-y-6">
+          <Card className="p-6">
+            <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+              <Clock className="h-4 w-4" />
               <span>Episodic Memory Logs Timeline</span>
             </h3>
 
-            <div class="relative pl-6 border-l border-slate-200 dark:border-slate-800 space-y-8">
+            <div className="relative pl-6 border-l border-slate-200 dark:border-slate-800 space-y-8">
               {timeline.map((node) => (
-                <div key={node.id} class="relative">
+                <div key={node.id} className="relative">
                   {/* Dot */}
-                  <span class="absolute -left-[30px] top-1.5 h-4 w-4 rounded-full border-4 border-white dark:border-slate-900 bg-primary-600"></span>
+                  <span className="absolute -left-[30px] top-1.5 h-4 w-4 rounded-full border-4 border-white dark:border-slate-900 bg-primary-600"></span>
                   
-                  <div class="space-y-1">
-                    <div class="flex justify-between items-center text-xs font-semibold text-slate-400">
-                      <div class="flex items-center space-x-2">
-                        <span class="px-2 py-0.5 bg-primary-50 dark:bg-primary-950/40 text-primary-600 dark:text-primary-400 rounded text-[9px] uppercase tracking-wider">
+                  <div className="space-y-1">
+                    <div className="flex justify-between items-center text-xs font-semibold text-slate-400">
+                      <div className="flex items-center space-x-2">
+                        <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-950/40 text-primary-600 dark:text-primary-400 rounded text-[9px] uppercase tracking-wider">
                           {node.memoryType}
                         </span>
-                        <span class="text-green-600">Relevance: {(node.relevanceScore * 100).toFixed(0)}%</span>
+                        <span className="text-green-600">Relevance: {(node.relevanceScore * 100).toFixed(0)}%</span>
                       </div>
                       <span>{new Date(node.createdDate).toLocaleTimeString()}</span>
                     </div>
-                    <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                    <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                       "{node.content}"
                     </p>
                   </div>
@@ -120,18 +120,18 @@ export const MemoryDashboard: React.FC = () => {
         </div>
 
         {/* Preference Center & Feedback */}
-        <div class="lg:col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-6">
           
           {/* explicit preference center */}
-          <Card class="p-6">
-            <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-              <Heart class="h-4 w-4 text-red-500" />
+          <Card className="p-6">
+            <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+              <Heart className="h-4 w-4 text-red-500" />
               <span>Preferences Center</span>
             </h3>
             
-            <form onSubmit={handleUpdatePreferences} class="space-y-4 text-xs font-semibold">
-              <div class="space-y-1">
-                <label class="block text-slate-400">Explicit Interest Tags</label>
+            <form onSubmit={handleUpdatePreferences} className="space-y-4 text-xs font-semibold">
+              <div className="space-y-1">
+                <label className="block text-slate-400">Explicit Interest Tags</label>
                 <input 
                   type="text" 
                   value={interestTags} 
@@ -147,15 +147,15 @@ export const MemoryDashboard: React.FC = () => {
           </Card>
 
           {/* Feedback Center */}
-          <Card class="p-6">
-            <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-              <Star class="h-4 w-4 text-yellow-500" />
+          <Card className="p-6">
+            <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+              <Star className="h-4 w-4 text-yellow-500" />
               <span>Feedback Center</span>
             </h3>
 
-            <form onSubmit={handleFeedback} class="space-y-4 text-xs font-semibold">
-              <div class="space-y-1">
-                <label class="block text-slate-400">Target Agent / Tool</label>
+            <form onSubmit={handleFeedback} className="space-y-4 text-xs font-semibold">
+              <div className="space-y-1">
+                <label className="block text-slate-400">Target Agent / Tool</label>
                 <select 
                   value={feedbackTarget} 
                   onChange={e => setFeedbackTarget(e.target.value)} 
@@ -167,15 +167,15 @@ export const MemoryDashboard: React.FC = () => {
                 </select>
               </div>
 
-              <div class="space-y-1">
-                <label class="block text-slate-400">Rating Satisfaction Score</label>
-                <div class="flex items-center space-x-2">
+              <div className="space-y-1">
+                <label className="block text-slate-400">Rating Satisfaction Score</label>
+                <div className="flex items-center space-x-2">
                   {[1, 2, 3, 4, 5].map((val) => (
                     <button 
                       key={val} 
                       type="button" 
                       onClick={() => setFeedbackRating(val)}
-                      class="text-slate-300 hover:text-yellow-500 transition-colors"
+                      className="text-slate-300 hover:text-yellow-500 transition-colors"
                     >
                       <Star className={`h-6 w-6 ${val <= feedbackRating ? 'text-yellow-500 fill-yellow-500' : 'text-slate-300'}`} />
                     </button>
@@ -183,8 +183,8 @@ export const MemoryDashboard: React.FC = () => {
                 </div>
               </div>
 
-              <div class="space-y-1">
-                <label class="block text-slate-400">Comment / Reflection Feedback</label>
+              <div className="space-y-1">
+                <label className="block text-slate-400">Comment / Reflection Feedback</label>
                 <textarea
                   value={feedbackComment}
                   onChange={e => setFeedbackComment(e.target.value)}

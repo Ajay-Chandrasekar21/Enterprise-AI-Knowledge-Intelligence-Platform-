@@ -103,24 +103,24 @@ export const WorkflowDesigner: React.FC = () => {
 
   const definitionColumns = [
     { header: 'Workflow Name', accessor: (row: WorkflowDefinition) => (
-      <div class="flex items-center space-x-3">
-        <GitPullRequest class="h-5 w-5 text-slate-400" />
-        <span class="font-medium text-slate-800 dark:text-slate-200">{row.name}</span>
+      <div className="flex items-center space-x-3">
+        <GitPullRequest className="h-5 w-5 text-slate-400" />
+        <span className="font-medium text-slate-800 dark:text-slate-200">{row.name}</span>
       </div>
     ) },
-    { header: 'Trigger Event', accessor: (row: WorkflowDefinition) => <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold uppercase rounded">{row.triggerType}</span> },
-    { header: 'Version', accessor: (row: WorkflowDefinition) => <span class="text-slate-400">v{row.version}</span> },
+    { header: 'Trigger Event', accessor: (row: WorkflowDefinition) => <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold uppercase rounded">{row.triggerType}</span> },
+    { header: 'Version', accessor: (row: WorkflowDefinition) => <span className="text-slate-400">v{row.version}</span> },
     { header: 'Actions', accessor: (row: WorkflowDefinition) => (
       <Button size="sm" onClick={() => handleLaunch(row.id)} className="text-[10px] py-1 px-3 flex items-center space-x-1">
-        <Play class="h-3 w-3" />
+        <Play className="h-3 w-3" />
         <span>Launch</span>
       </Button>
     ) }
   ];
 
   const instanceColumns = [
-    { header: 'Workflow Definition', accessor: (row: WorkflowInstance) => <span class="font-semibold text-slate-800 dark:text-slate-200">{row.definition.name}</span> },
-    { header: 'Current Node', accessor: (row: WorkflowInstance) => <span class="text-xs text-slate-400 font-mono">{row.currentNodeId || 'COMPLETED'}</span> },
+    { header: 'Workflow Definition', accessor: (row: WorkflowInstance) => <span className="font-semibold text-slate-800 dark:text-slate-200">{row.definition.name}</span> },
+    { header: 'Current Node', accessor: (row: WorkflowInstance) => <span className="text-xs text-slate-400 font-mono">{row.currentNodeId || 'COMPLETED'}</span> },
     { header: 'Status', accessor: (row: WorkflowInstance) => {
       const colors = {
         RUNNING: 'bg-blue-50 text-blue-700 animate-pulse',
@@ -128,44 +128,44 @@ export const WorkflowDesigner: React.FC = () => {
         COMPLETED: 'bg-green-50 text-green-700',
         FAILED: 'bg-red-50 text-red-700',
       };
-      return <span class={`px-2 py-0.5 rounded-md text-[10px] uppercase ${colors[row.status]}`}>{row.status}</span>;
+      return <span className={`px-2 py-0.5 rounded-md text-[10px] uppercase ${colors[row.status]}`}>{row.status}</span>;
     } },
     { header: 'Actions', accessor: (row: WorkflowInstance) => (
       row.status === 'WAITING_APPROVAL' ? (
         <Button size="sm" onClick={() => handleApprove(row.id)} className="text-[10px] py-1 px-3">
           Approve step
         </Button>
-      ) : <span class="text-xs text-slate-400">Autonomous Execution</span>
+      ) : <span className="text-xs text-slate-400">Autonomous Execution</span>
     ) }
   ];
 
   return (
-    <div class="space-y-6">
+    <div className="space-y-6">
       
       {/* Header */}
-      <div class="flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <div>
-          <h1 class="text-2xl font-bold">Workflow Engine</h1>
-          <p class="text-slate-500 text-sm">Design, schedule, and orchestrate autonomous multi-agent pipelines</p>
+          <h1 className="text-2xl font-bold">Workflow Engine</h1>
+          <p className="text-slate-500 text-sm">Design, schedule, and orchestrate autonomous multi-agent pipelines</p>
         </div>
 
         {/* Tab navigation */}
-        <div class="flex bg-slate-100 dark:bg-slate-800/40 p-1 rounded-xl space-x-1 text-xs font-medium">
+        <div className="flex bg-slate-100 dark:bg-slate-800/40 p-1 rounded-xl space-x-1 text-xs font-medium">
           <button 
             onClick={() => setActiveTab('templates')} 
-            class={`px-4 py-2 rounded-lg transition-all ${activeTab === 'templates' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
+            className={`px-4 py-2 rounded-lg transition-all ${activeTab === 'templates' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
           >
             Templates
           </button>
           <button 
             onClick={() => setActiveTab('designer')} 
-            class={`px-4 py-2 rounded-lg transition-all ${activeTab === 'designer' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
+            className={`px-4 py-2 rounded-lg transition-all ${activeTab === 'designer' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
           >
             Designer Canvas
           </button>
           <button 
             onClick={() => setActiveTab('instances')} 
-            class={`px-4 py-2 rounded-lg transition-all ${activeTab === 'instances' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
+            className={`px-4 py-2 rounded-lg transition-all ${activeTab === 'instances' ? 'bg-white dark:bg-slate-900 shadow-sm text-primary-600' : 'text-slate-600'}`}
           >
             Execution Logs
           </button>
@@ -173,25 +173,25 @@ export const WorkflowDesigner: React.FC = () => {
       </div>
 
       {activeTab === 'templates' && (
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Templates list */}
-          <Card class="p-6 lg:col-span-2">
-            <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-              <GitPullRequest class="h-4 w-4" />
+          <Card className="p-6 lg:col-span-2">
+            <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+              <GitPullRequest className="h-4 w-4" />
               <span>Workflow Templates Catalog</span>
             </h3>
             <Table columns={definitionColumns} data={definitions} />
           </Card>
 
           {/* New template form */}
-          <Card class="p-6 lg:col-span-1">
-            <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-              <Plus class="h-4 w-4" />
+          <Card className="p-6 lg:col-span-1">
+            <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+              <Plus className="h-4 w-4" />
               <span>Define Workflow</span>
             </h3>
-            <form onSubmit={handleCreate} class="space-y-4 text-xs font-semibold">
-              <div class="space-y-1">
-                <label class="block text-slate-400">Workflow Name</label>
+            <form onSubmit={handleCreate} className="space-y-4 text-xs font-semibold">
+              <div className="space-y-1">
+                <label className="block text-slate-400">Workflow Name</label>
                 <input 
                   type="text" 
                   value={name} 
@@ -201,8 +201,8 @@ export const WorkflowDesigner: React.FC = () => {
                 />
               </div>
 
-              <div class="space-y-1">
-                <label class="block text-slate-400">Trigger Event</label>
+              <div className="space-y-1">
+                <label className="block text-slate-400">Trigger Event</label>
                 <select 
                   value={triggerType} 
                   onChange={e => setTriggerType(e.target.value)} 
@@ -224,42 +224,42 @@ export const WorkflowDesigner: React.FC = () => {
       )}
 
       {activeTab === 'designer' && (
-        <Card class="p-6 space-y-4">
-          <h3 class="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
-            <Share2 class="h-4 w-4" />
+        <Card className="p-6 space-y-4">
+          <h3 className="text-sm font-semibold text-slate-500 uppercase flex items-center space-x-2">
+            <Share2 className="h-4 w-4" />
             <span>Workflow Designer Canvas</span>
           </h3>
 
-          <div class="bg-slate-950 rounded-xl p-8 min-h-[350px] flex items-center justify-center relative overflow-hidden">
-            <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+          <div className="bg-slate-950 rounded-xl p-8 min-h-[350px] flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
             
-            <div class="relative z-10 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8">
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8">
               {/* Node 1 */}
-              <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl w-[200px] text-xs space-y-1">
-                <div class="flex justify-between items-center text-[10px] text-primary-500 font-bold uppercase">
+              <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl w-[200px] text-xs space-y-1">
+                <div className="flex justify-between items-center text-[10px] text-primary-500 font-bold uppercase">
                   <span>Trigger Node</span>
                 </div>
-                <h4 class="font-bold text-white">Event: Borrow Created</h4>
+                <h4 className="font-bold text-white">Event: Borrow Created</h4>
               </div>
 
-              <div class="h-8 w-0.5 md:h-0.5 md:w-8 bg-slate-800"></div>
+              <div className="h-8 w-0.5 md:h-0.5 md:w-8 bg-slate-800"></div>
 
               {/* Node 2 */}
-              <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl w-[200px] text-xs space-y-1">
-                <div class="flex justify-between items-center text-[10px] text-orange-500 font-bold uppercase">
+              <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl w-[200px] text-xs space-y-1">
+                <div className="flex justify-between items-center text-[10px] text-orange-500 font-bold uppercase">
                   <span>Approval Node</span>
                 </div>
-                <h4 class="font-bold text-white">Librarian Review</h4>
+                <h4 className="font-bold text-white">Librarian Review</h4>
               </div>
 
-              <div class="h-8 w-0.5 md:h-0.5 md:w-8 bg-slate-800"></div>
+              <div className="h-8 w-0.5 md:h-0.5 md:w-8 bg-slate-800"></div>
 
               {/* Node 3 */}
-              <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl w-[200px] text-xs space-y-1">
-                <div class="flex justify-between items-center text-[10px] text-green-500 font-bold uppercase">
+              <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl w-[200px] text-xs space-y-1">
+                <div className="flex justify-between items-center text-[10px] text-green-500 font-bold uppercase">
                   <span>Action Tool Node</span>
                 </div>
-                <h4 class="font-bold text-white">Send Receipt Alert</h4>
+                <h4 className="font-bold text-white">Send Receipt Alert</h4>
               </div>
             </div>
           </div>
@@ -267,9 +267,9 @@ export const WorkflowDesigner: React.FC = () => {
       )}
 
       {activeTab === 'instances' && (
-        <Card class="p-6">
-          <h3 class="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
-            <Clock class="h-4 w-4" />
+        <Card className="p-6">
+          <h3 className="text-sm font-semibold mb-4 text-slate-500 uppercase flex items-center space-x-2">
+            <Clock className="h-4 w-4" />
             <span>Workflow Active Instances logs</span>
           </h3>
           <Table columns={instanceColumns} data={instances} />
