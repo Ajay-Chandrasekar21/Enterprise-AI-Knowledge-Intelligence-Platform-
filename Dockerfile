@@ -31,7 +31,9 @@ RUN pip install --no-cache-dir \
     bcrypt \
     redis \
     apscheduler \
-    alembic
+    alembic \
+    email-validator
+
 
 # Copy source directories
 COPY eakip_core/src eakip_core/src
