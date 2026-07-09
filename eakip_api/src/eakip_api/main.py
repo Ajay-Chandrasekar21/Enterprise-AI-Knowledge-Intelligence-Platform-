@@ -48,31 +48,39 @@ scheduler = BackgroundScheduler()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup Events: Initialize APScheduler
-    logger.info("Initializing APScheduler Background Jobs...")
+    # Detect serverless execution environments (e.g., Vercel)
+    is_serverless = os.getenv("VERCEL") == "1" or os.getenv("AWS_LAMBDA_FUNCTION_NAME") is not None
     
-    # Mock user compression job triggered hourly
-    mock_user_uuid = uuid.UUID("11111111-1111-1111-1111-111111111111")
-    def periodic_memory_compression():
-        try:
-            logger.info("APScheduler: Triggering periodic memory compression task...")
-            from eakip_agent_orchestrator.memory import MemoryManager
-            manager = MemoryManager()
-            manager.compress_memories(mock_user_uuid)
-            logger.info("APScheduler: Memory compression task completed.")
-        except Exception as e:
-            logger.error(f"APScheduler: Memory compression failed: {str(e)}")
+    if is_serverless:
+        logger.info("Serverless environment detected (Vercel). Skipping APScheduler initialization.")
+        yield
+    else:
+        # Startup Events: Initialize APScheduler
+        logger.info("Initializing APScheduler Background Jobs...")
+        
+        # Mock user compression job triggered hourly
+        mock_user_uuid = uuid.UUID("11111111-1111-1111-1111-111111111111")
+        def periodic_memory_compression():
+            try:
+                logger.info("APScheduler: Triggering periodic memory compression task...")
+                from eakip_agent_orchestrator.memory import MemoryManager
+                manager = MemoryManager()
+                manager.compress_memories(mock_user_uuid)
+                logger.info("APScheduler: Memory compression task completed.")
+            except Exception as e:
+                logger.error(f"APScheduler: Memory compression failed: {str(e)}")
 
-    scheduler.add_job(periodic_memory_compression, "interval", hours=1, id="memory_compress")
-    scheduler.start()
-    logger.info("APScheduler started successfully.")
-    
-    yield
-    
-    # Shutdown Events: Stop Scheduler
-    logger.info("Shutting down APScheduler...")
-    scheduler.shutdown()
-    logger.info("APScheduler shutdown completed.")
+        scheduler.add_job(periodic_memory_compression, "interval", hours=1, id="memory_compress")
+        scheduler.start()
+        logger.info("APScheduler started successfully.")
+        
+        yield
+        
+        # Shutdown Events: Stop Scheduler
+        logger.info("Shutting down APScheduler...")
+        scheduler.shutdown()
+        logger.info("APScheduler shutdown completed.")
+
 
 app = FastAPI(
     title="Enterprise AI Knowledge Intelligence Platform (EAKIP)",
