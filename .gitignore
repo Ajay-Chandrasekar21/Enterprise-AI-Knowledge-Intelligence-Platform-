@@ -112,6 +112,5 @@ env/
 *.njsproj
 *.sln
 *.sw?
-
 # Alembic database versions (optional, but keep migrations env local config clean)
-alembic.ini
+
