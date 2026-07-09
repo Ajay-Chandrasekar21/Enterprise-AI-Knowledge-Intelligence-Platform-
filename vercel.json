@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "eakip_api/src/eakip_api/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "eakip_api/src/eakip_api/main.py"
+    }
+  ]
+}
