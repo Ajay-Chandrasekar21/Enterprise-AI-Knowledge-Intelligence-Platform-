@@ -32,7 +32,8 @@ RUN pip install --no-cache-dir \
     redis \
     apscheduler \
     alembic \
-    email-validator
+    email-validator \
+    requests
 
 
 # Copy source directories
